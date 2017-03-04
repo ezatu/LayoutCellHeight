@@ -37,12 +37,9 @@
 }
 
 - (CGFloat)cellHeight {
-    CGFloat height;
+
+    return CGRectGetMaxY(_comField.frame);
     
-    // 计算高度
-    height = 80 + CGRectGetHeight(_nameLabel.frame) + CGRectGetHeight(_contentLabel.frame) + CGRectGetHeight(_imgViews.frame) + CGRectGetHeight(_comViews.frame) + CGRectGetHeight(_comField.frame);
-    
-    return height;
 }
 
 - (void)setModel:(comModel *)model {
