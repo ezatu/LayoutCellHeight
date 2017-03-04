@@ -8,3 +8,8 @@
 示例效果演示图
 
  ![image](https://github.com/ezatu/LayoutCellHeight/blob/master/%E7%A4%BA%E4%BE%8Bdemo.gif)
+
+实现功能：
+1、实现多图动态适配；
+2、实现cell高度动态计算；
+3、实现提交评论block回调，减少不必要的UITextField代理复杂逻辑。
