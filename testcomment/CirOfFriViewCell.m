@@ -15,6 +15,9 @@
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define MARGIN 10
 #define picWidth (SCREEN_WIDTH - 4 * MARGIN) / 3
+#define SCALEW SCREEN_WIDTH / 375
+#define SCALEH SCREEN_HEIGHT / 667
+
 
 @interface CirOfFriViewCell () {
 
@@ -97,16 +100,16 @@
         commLabel.textColor = [UIColor whiteColor];
         [_comViews addSubview:commLabel];
         [commLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@25);
+            make.height.mas_equalTo(25 * SCALEH);
             make.left.equalTo(_comViews);
-            make.top.equalTo(_comViews).offset(5 + (5 + 25) * i);
+            make.top.equalTo(_comViews).offset(5 + (5 + (25 * SCALEH)) * i);
         }];
         commLabel.backgroundColor = [UIColor blackColor];
     }
     [_comViews mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_imgViews.mas_bottom).offset(MARGIN);
         make.left.equalTo(self.contentView).offset(MARGIN);
-        make.height.mas_equalTo(model.commArray.count * (25 + 5) + 5);
+        make.height.mas_equalTo(model.commArray.count * ((25 * SCALEH) + 5) + 5);
         make.right.equalTo(self.contentView).offset(-MARGIN);
     }];
     
@@ -129,9 +132,9 @@
         [_iconView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView).offset(MARGIN);
             make.top.equalTo(self.contentView).offset(MARGIN);
-            make.size.mas_equalTo(CGSizeMake(45, 45));
+            make.size.mas_equalTo(CGSizeMake(45 * SCALEW, 45 * SCALEW));
         }];
-        _iconView.layer.cornerRadius = 22.5;
+        _iconView.layer.cornerRadius = 45 * SCALEW / 2;
         _iconView.layer.masksToBounds = YES;
         
         // 用户昵称
@@ -192,7 +195,7 @@
         [_comField mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_comViews.mas_bottom);
             make.width.equalTo(self.contentView);
-            make.height.equalTo(@35);
+            make.height.mas_equalTo(35 * SCALEH);
         }];
         _comField.backgroundColor = [UIColor orangeColor];
         _comField.font = [UIFont systemFontOfSize:14];
@@ -203,7 +206,7 @@
         [postBtn setTitle:@"发布" forState:UIControlStateNormal];
         postBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [postBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        postBtn.frame = CGRectMake(0, 0, 35, 35);
+        postBtn.frame = CGRectMake(0, 0, 35 * SCALEH, 35 * SCALEH);
         [postBtn addTarget:self action:@selector(handlePostBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
         _comField.rightView = postBtn;
         _comField.rightViewMode = UITextFieldViewModeAlways;

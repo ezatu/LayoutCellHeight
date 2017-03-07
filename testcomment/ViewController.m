@@ -23,19 +23,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initDataArray];
     [self layoutSubviews];
-    _dataArray = [NSMutableArray array];
+    // Do any additional setup after loading the view, typically from a nib.
+}
 
+- (void)initDataArray {
+    
+    _dataArray = [NSMutableArray array];
+    
     for (NSInteger i = 0; i < 6; i ++) {
         comModel *model = [[comModel alloc] init];
-
+        
         model.userName = [NSString stringWithFormat:@"用户%ld", i];
         model.userIconUrl = @"http://fanyi.baidu.com/static/translation/img/header/logo_cbfea26.png";
         model.content = @"测试内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容。。。。。。。。。..........";
         model.postTime = @"2017-03-03 10:10:10";
         model.imgArray = [NSMutableArray array];
         model.commArray = [NSMutableArray array];
-
+        
         for (NSInteger j = 0; j <= i; j ++) {
             NSString *comment = [NSString stringWithFormat:@"%ld用户的评论",j];
             [model.commArray addObject:comment];
@@ -43,7 +49,6 @@
         }
         [_dataArray addObject:model];
     }
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)layoutSubviews {
@@ -81,7 +86,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 1;
+    return (!section) ? 0.0001f : 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
