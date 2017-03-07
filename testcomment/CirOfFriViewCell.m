@@ -24,6 +24,7 @@
     UILabel *_contentLabel;  // 发布内容
     UIView *_imgViews;  // 发布图片容器view
     UIView *_comViews;  // 评论显示容器view
+    UITextField *_comField; // 评论输入框
     
 }
 
@@ -92,18 +93,21 @@
     for (NSInteger i = 0; i < model.commArray.count; i ++) {
         UILabel *commLabel = [[UILabel alloc] init];
         commLabel.text = model.commArray[i];
+        commLabel.font = [UIFont systemFontOfSize:12];
+        commLabel.textColor = [UIColor whiteColor];
         [_comViews addSubview:commLabel];
         [commLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@35);
-            make.left.equalTo(_comViews).offset(MARGIN);
-            make.top.equalTo(_comViews).offset(MARGIN + (MARGIN + 35) * i);
+            make.height.equalTo(@25);
+            make.left.equalTo(_comViews);
+            make.top.equalTo(_comViews).offset(5 + (5 + 25) * i);
         }];
-        commLabel.backgroundColor = [UIColor grayColor];
+        commLabel.backgroundColor = [UIColor blackColor];
     }
     [_comViews mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_imgViews.mas_bottom).offset(MARGIN);
-        make.width.equalTo(_imgViews);
-        make.height.mas_equalTo(model.commArray.count * (35 + MARGIN) + MARGIN);
+        make.left.equalTo(self.contentView).offset(MARGIN);
+        make.height.mas_equalTo(model.commArray.count * (25 + 5) + 5);
+        make.right.equalTo(self.contentView).offset(-MARGIN);
     }];
     
     [self layoutIfNeeded];
@@ -147,6 +151,7 @@
             make.top.equalTo(_nameLabel);
         }];
         _timeLabel.font = [UIFont systemFontOfSize:12];
+        _timeLabel.textColor = [UIColor grayColor];
 
         
         // 发布内容
@@ -176,24 +181,29 @@
         [self.contentView addSubview:_comViews];
         [_comViews mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_imgViews.mas_bottom).offset(MARGIN);
-            make.width.equalTo(_imgViews);
             make.height.equalTo(@45);
             make.left.equalTo(self.contentView).offset(MARGIN);
+            make.right.equalTo(self.contentView).offset(-MARGIN);
         }];
         
         // 评论框
         _comField = [[UITextField alloc] init];
         [self.contentView addSubview:_comField];
         [_comField mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_comViews.mas_bottom).offset(MARGIN);
-            make.width.equalTo(_comViews);
-            make.height.equalTo(@45);
+            make.top.equalTo(_comViews.mas_bottom);
+            make.width.equalTo(self.contentView);
+            make.height.equalTo(@35);
         }];
         _comField.backgroundColor = [UIColor orangeColor];
+        _comField.font = [UIFont systemFontOfSize:14];
+        _comField.placeholder = @"请输入评论内容";
+        _comField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
+        _comField.leftViewMode = UITextFieldViewModeAlways;
         UIButton *postBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [postBtn setTitle:@"发布" forState:UIControlStateNormal];
+        postBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [postBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        postBtn.frame = CGRectMake(0, 0, 45, 45);
+        postBtn.frame = CGRectMake(0, 0, 35, 35);
         [postBtn addTarget:self action:@selector(handlePostBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
         _comField.rightView = postBtn;
         _comField.rightViewMode = UITextFieldViewModeAlways;

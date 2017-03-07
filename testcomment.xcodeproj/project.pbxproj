@@ -263,7 +263,7 @@
 				TargetAttributes = {
 					22AA4EF61E694B700098162D = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = GLRP8BCS93;
+						DevelopmentTeam = GLV5NBU7CU;
 						ProvisioningStyle = Automatic;
 					};
 					22AA4F0F1E694B700098162D = {
@@ -613,7 +613,7 @@
 			baseConfigurationReference = 959F49BDC06EF0AE87790BB3 /* Pods-testcomment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GLRP8BCS93;
+				DEVELOPMENT_TEAM = GLV5NBU7CU;
 				INFOPLIST_FILE = testcomment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-23.testcomment";
@@ -626,7 +626,7 @@
 			baseConfigurationReference = 2E4B9C0CBA70E0B15C142B54 /* Pods-testcomment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GLRP8BCS93;
+				DEVELOPMENT_TEAM = GLV5NBU7CU;
 				INFOPLIST_FILE = testcomment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-23.testcomment";

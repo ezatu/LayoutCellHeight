@@ -17,7 +17,6 @@ typedef void (^CallBack)(NSString *comment);
 @property (nonatomic, copy) CallBack commentBlock;
 @property (nonatomic, strong) comModel *model;
 @property (nonatomic, assign) CGFloat cellHeight;
-@property (nonatomic, copy) UITextField *comField;
 
 
 - (void)postCommentWithCallBack:(CallBack)block;
